@@ -96,6 +96,7 @@ Follow these steps to effectively manage doctors and appointments using the DocA
 - Patient data is stored in 'patients.txt'.
 - Doctor data is stored in doctors.txt.
 - Appointment data is stored in appointments.txt.
+
 These files are loaded at the start of the program and saved upon exiting.
 ## Contributing
 
