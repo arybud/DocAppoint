@@ -35,7 +35,7 @@ public:
     string name;
     string specialization;
     string contact;
-    map<string, vector<pair<string, string> > > schedule; // Day to time slots
+    map<string, vector<pair<string, string> > > schedule; 
 
     Doctor(int id, string name, string specialization, string contact)
         : id(id), name(name), specialization(specialization), contact(contact) {}
@@ -411,7 +411,7 @@ public:
         } while (more == "yes");
 
         doctors.push_back(newDoctor);
-        saveDoctors(); // Save doctors to file
+        saveDoctors(); 
         cout << "Doctor added successfully.\n";
         waitForUser();
     }
@@ -473,7 +473,7 @@ public:
         cout << "Enter doctor ID to delete: ";
         cin >> id;
         doctors.erase(remove_if(doctors.begin(), doctors.end(), FindDoctorById(id)), doctors.end());
-        saveDoctors(); // Save doctors to file
+        saveDoctors(); 
         cout << "Doctor deleted successfully.\n";
         waitForUser();
     }
@@ -483,19 +483,19 @@ public:
     string date, time, patientName, patientGender, patientContact, patientIssue;
     int patientAge;
 
-    // Loop until a valid doctor ID is entered
     while (true) {
         cout << "Enter doctor ID: ";
         cin >> doctorId;
 
         if (find_if(doctors.begin(), doctors.end(), FindDoctorById(doctorId)) == doctors.end()) {
-            cout << "Invalid doctor ID. Please enter a valid doctor ID.\n";
-        } else {
-            break;
+        cout << "Doctor ID doesn't exist. ";
+        waitForUser();
+        return;
+    } else {
+        break;
         }
     }
 
-    // Loop until a valid date is entered
     while (true) {
         cout << "Enter appointment date (DD-MM-YYYY): ";
         cin >> date;
@@ -605,11 +605,11 @@ public:
     int patientId = nextPatientId++;
     Patient newPatient(patientId, patientName, patientAge, patientGender, patientContact, patientIssue);
     patients.push_back(newPatient);
-    savePatients(); // Save patients to file
+    savePatients(); 
 
     Appointment newAppointment(nextAppointmentId++, patientId, doctorId, date, time);
     appointments.push_back(newAppointment);
-    saveAppointments(); // Save appointments to file
+    saveAppointments(); 
 
     cout << "Appointment added successfully.\n";
     waitForUser();
